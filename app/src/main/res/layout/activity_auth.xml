@@ -43,17 +43,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal">
         <Button
             android:id="@+id/registerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_marginRight="8dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:text="REGISTER"/>
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button"
             android:text="LOGIN"/>
     </LinearLayout>
 
