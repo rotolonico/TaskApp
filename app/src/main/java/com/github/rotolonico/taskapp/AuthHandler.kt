@@ -2,12 +2,13 @@ package com.github.rotolonico.taskapp
 
 import com.github.rotolonico.taskapp.models.UserResponse
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
 class AuthHandler {
     companion object {
-        fun isSignedIn(): Boolean = FirebaseAuth.getInstance().currentUser != null
+        fun isSignedIn(): FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
         suspend fun signUpUser(email: String, password: String): UserResponse {
             val signUpUserResponse = UserResponse()

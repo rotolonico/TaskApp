@@ -1,13 +1,10 @@
 package com.github.rotolonico.taskapp
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_auth.*
-import kotlinx.android.synthetic.main.activity_main.loginButton
-import kotlinx.android.synthetic.main.activity_main.registerButton
 
 class AuthActivity : AppCompatActivity() {
 

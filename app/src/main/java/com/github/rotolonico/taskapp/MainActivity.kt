@@ -61,7 +61,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecycler() {
+        adapter = ProjectsAdapter(ArrayList())
         projectsRecycler.layoutManager = LinearLayoutManager(this)
-        projectsRecycler.adapter = ProjectsAdapter(ArrayList())
+        projectsRecycler.adapter = adapter
     }
 }

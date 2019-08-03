@@ -13,7 +13,13 @@ class AuthViewModel : ViewModel() {
     lateinit var userId : String
 
     fun isSignedIn() : Boolean {
-        return AuthHandler.isSignedIn()
+        AuthHandler.isSignedIn()?.let {
+            userId = it.uid
+            userEmail = it.email!!
+            return true
+        }
+
+        return false
     }
 
     fun signUpUser(email : String, password : String) : SingleLiveEvent<String> {
@@ -22,6 +28,8 @@ class AuthViewModel : ViewModel() {
         viewModelScope.launch {
             val userResponse = AuthHandler.signUpUser(email, password)
             if (userResponse.success){
+                userId = userResponse.user!!.uid
+                userEmail = userResponse.user!!.email!!
                 event.value = ""
             } else {
                 event.value = userResponse.error
@@ -37,6 +45,8 @@ class AuthViewModel : ViewModel() {
         viewModelScope.launch {
             val userResponse = AuthHandler.signInUser(email, password)
             if (userResponse.success){
+                userId = userResponse.user!!.uid
+                userEmail = userResponse.user!!.email!!
                 event.value = ""
             } else {
                 event.value = userResponse.error

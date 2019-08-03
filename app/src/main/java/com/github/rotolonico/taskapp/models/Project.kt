@@ -4,6 +4,5 @@ data class Project(
     var id : String  = "",
     var name: String = "",
     var creation: Long = 0,
-    var tasks: List<Task> = ArrayList(),
     var owner: String = ""
 )
