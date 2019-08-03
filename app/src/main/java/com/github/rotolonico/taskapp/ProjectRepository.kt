@@ -8,7 +8,6 @@ import com.github.rotolonico.taskapp.models.UserResponse
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.tasks.await
 
 class ProjectRepository{
 
@@ -16,7 +15,7 @@ class ProjectRepository{
 
         fun createProject(project: Project) {
             FirebaseFirestore.getInstance().collection("${project.owner}/projects/")
-                .document(System.currentTimeMillis().toString()).set(project)
+                .document(project.id).set(project)
         }
 
         fun getProject(projectId: String, projectOwner: String): LiveData<Project> {
