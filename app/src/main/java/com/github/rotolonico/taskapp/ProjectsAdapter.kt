@@ -24,7 +24,7 @@ class ProjectsAdapter(var data: List<Project>): RecyclerView.Adapter<ProjectsAda
         holder.view.projectCreated.text = timestampToReadable(data[position].creation)
     }
 
-    fun timestampToReadable(timestamp: Long): String? = SimpleDateFormat("dd MM yyyy").format(Date(timestamp))
+    fun timestampToReadable(timestamp: Long): String? = SimpleDateFormat("dd MM yyyy HH:mm").format(Date(timestamp))
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 }

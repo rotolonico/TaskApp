@@ -8,6 +8,7 @@ import com.github.rotolonico.taskapp.models.UserResponse
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class ProjectRepository{
 
@@ -44,8 +45,10 @@ class ProjectRepository{
             userReference
                 .document(projectsOwner)
                 .collection("projects")
+                .orderBy("creation", Query.Direction.DESCENDING)
                 .addSnapshotListener { documentSnapshot, exception ->
 
+                    projects.clear()
                     documentSnapshot?.documents?.forEach { it ->
                         it?.let {
                             it.toObject(Project::class.java)?.let {
