@@ -1,4 +1,4 @@
-package com.github.rotolonico.taskapp
+package com.github.rotolonico.taskapp.models
 
 import com.google.firebase.auth.FirebaseUser
 
