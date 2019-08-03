@@ -1,15 +1,16 @@
 package com.github.rotolonico.taskapp
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.rotolonico.taskapp.Helpers.SingleLiveEvent
 import kotlinx.coroutines.launch
 
 class AuthViewModel : ViewModel() {
+
+    lateinit var userEmail : String
+    lateinit var userId : String
 
     fun isSignedIn() : Boolean {
         return AuthHandler.isSignedIn()
@@ -46,7 +47,13 @@ class AuthViewModel : ViewModel() {
     }
 
     fun goToMainActivity(context : Activity){
+        storeUserInfo(context)
         context.startActivity(Intent(context, MainActivity::class.java))
         context.finish()
+    }
+
+    fun storeUserInfo(context: Activity) {
+        (context.application as TaskAppApplication).userEmail = userEmail
+        (context.application as TaskAppApplication).userId = userId
     }
 }
