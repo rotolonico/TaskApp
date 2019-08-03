@@ -19,25 +19,20 @@ class AuthActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
 
-        if (viewModel.isSignedIn()) goToMainActivity()
+        if (viewModel.isSignedIn()) viewModel.goToMainActivity(this)
 
         loginButton.setOnClickListener {
             viewModel.signInUser(emailInput.text.toString(), passwordInput.text.toString()).observe(this, Observer {
-                if (it == "") goToMainActivity()
+                if (it == "") viewModel.goToMainActivity(this)
                 else errorText.text = it
             })
         }
 
         registerButton.setOnClickListener {
             viewModel.signUpUser(emailInput.text.toString(), passwordInput.text.toString()).observe(this, Observer {
-                if (it == "") goToMainActivity()
+                if (it == "") viewModel.goToMainActivity(this)
                 else errorText.text = it
             })
         }
-    }
-
-    private fun goToMainActivity(){
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
     }
 }

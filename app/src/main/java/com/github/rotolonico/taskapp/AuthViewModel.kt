@@ -1,5 +1,9 @@
 package com.github.rotolonico.taskapp
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.rotolonico.taskapp.Helpers.SingleLiveEvent
@@ -39,5 +43,10 @@ class AuthViewModel : ViewModel() {
         }
 
         return event
+    }
+
+    fun goToMainActivity(context : Activity){
+        context.startActivity(Intent(context, MainActivity::class.java))
+        context.finish()
     }
 }
